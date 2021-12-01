@@ -1,12 +1,14 @@
+![FORGE LOGO](banner.png)
+
 # ⚒ FORGE
-FORGE Makes common DAI build commands available within VIM without the need to close your current buffer.
+FORGE makes common DAI build commands available within VIM without the need to close your current buffer.The output from a build is displayed to the right in a new buffer. The live build outputs are syntax-highlighted so you can easily keep track of the progress.
 
 ## Supported Build Commands
-* :Fmake --> make
-* :Fmakefresh --> make fresh
-* :Fmakeatf --> make atf
-* :Fmakeapi --> make web_api_cgi
-* :Futsysbuild --> ut_sys_build
+* ```:Fmake``` ➡ ```make```
+* ```:Fmakefresh``` ➡ ```make fresh```
+* ```:Fmakeatf``` ➡ ```make atf```
+* ```:Fmakeapi``` ➡ ```make web_api_cgi```
+* ```:Futsysbuild``` ➡ ```ut_sys_build```
 
 ## Installation (Using VIM-Plug)
 * Add the following to your .vimrc file where you would normally install plugins:  Plug 'cburj/vim-forge'
