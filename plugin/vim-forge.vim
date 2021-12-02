@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------------
 " FORGE:        Forge Build Tools
 " Maintainer:   Charlie Burgess [http://cburg.co.uk]
-" Version:      0.0.1
+" Version:      1.0.0
 " Project Repo: http://github.com/cburj/forge/
 " Description:  Makes common DAI build commands available within VIM. 
 " -----------------------------------------------------------------------------------
@@ -21,6 +21,7 @@ command! Fmakefresh   :call FORGE_MakeFresh()
 command! Fmakeapi     :call FORGE_MakeWebApiCgi()
 command! Fmakeatf     :call FORGE_MakeAtf()
 command! Futsysbuild  :call FORGE_UtSysBuild()
+command! Fmenu        :call FORGE_MainMenu()
 
 
 " TODO KEYBINDS:
@@ -103,3 +104,30 @@ function! FORGE_UtSysBuild()
   "TODO assign the job to a global variable. Then we can
   "allow the user to stop a job from within the new buffer.
 endfunction
+
+
+""
+" Handles all of the inputs from the SaveMenu popup box
+"
+func! FORGE_HandleBuildMenu(id, result)
+  if a:result == 1
+    call FORGE_Make()
+  elseif a:result ==2
+    call FORGE_MakeFresh()
+  elseif a:result == 3
+    call FORGE_MakeWebApiCgi()
+  elseif a:result == 4
+    call FORGE_MakeAtf()
+  elseif a:result == 5
+    call FORGE_UtSysBuild()
+  else
+    "Do nothing
+  endif
+endfunc
+
+""
+" Build Menu Popup Function
+"
+func! FORGE_MainMenu()
+  call popup_menu([ 'make', 'make fresh', 'make web_apic_cgi','make atf', 'ut_sys_build'], #{ title: "Build Options [FORGE]", callback: 'FORGE_HandleBuildMenu', highlight: 'wildmenu', border: [], close: 'click',  padding: [1,5,1,5]} )
+endfun
