@@ -3,18 +3,20 @@
 # ⚒ FORGE
 FORGE makes common DAI build commands available within VIM without the need to close your current buffer.The output from a build is displayed to the right in a new buffer. The live build outputs are syntax-highlighted so you can easily keep track of the progress.
 
+## Build Menu
+All available build commands can also be accessed from the build menu, by calling ```:Fmenu```.
+
 ## Supported Build Commands
 * ```:Fmake``` ➡ ```make```
 * ```:Fmakefresh``` ➡ ```make fresh```
 * ```:Fmakeatf``` ➡ ```make atf```
 * ```:Fmakeapi``` ➡ ```make web_api_cgi```
-* ```:Futsysbuild``` ➡ ```ut_sys_build```
+* ```:Futsysbuild``` ➡ ```ut_sys_build```  
+These commands can be called in command mode. Or bound to keymaps in your .vimrc file.
 
-## Build Menu
-All available build commands can also be accessed from the build menu, by calling ```:Fmenu```.
-
-## Note:
-Currently, FORGE is unable to correctly handle build failures. You may notice that the progress of your build seems to freeze - this means that an error has been encountered. Unfortunately, I haven't quite had the time to work out how to capture these errors and show them in the output buffer. This should be fixed in version 1.1.0
+## Upcoming Features
+* Commands inside the build output window. E.g. cancel a build and restart.
+* Support for more build methods with arguments. E.g. ```ut_lib prod_lib.c```
 
 ## Installation (Using VIM-Plug)
 * Add the following to your .vimrc file where you would normally install plugins:  Plug 'cburj/vim-forge'

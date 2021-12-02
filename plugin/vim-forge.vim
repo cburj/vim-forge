@@ -1,14 +1,12 @@
 " -----------------------------------------------------------------------------------
 " FORGE:        Forge Build Tools
 " Maintainer:   Charlie Burgess [http://cburg.co.uk]
-" Version:      1.0.0
+" Version:      1.1.0
 " Project Repo: http://github.com/cburj/forge/
 " Description:  Makes common DAI build commands available within VIM. 
 " -----------------------------------------------------------------------------------
 " Features Requiring Implementation:
 " - Allow jobs to be stopped from within the buffer.
-" - Popup Menu for all build commands.
-" - Verbose commands for triggering builds e.g. :make or :makefresh
 " -----------------------------------------------------------------------------------
 
 
@@ -33,9 +31,11 @@ command! Fmenu        :call FORGE_MainMenu()
 
 ""
 " Calls the generic 'make' command in the terminal
+"
 function! FORGE_Make()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'make', {'out_io': 'buffer', 'out_name': 'forge_make'} )
+  let job_MAKE = job_start( 'make', {'out_io': 'buffer', 'out_name': 'forge_make',
+                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
   setlocal buftype=nofile
@@ -48,9 +48,11 @@ endfunction
 
 ""
 " Calls the 'make fresh' command in the terminal
+"
 function! FORGE_MakeFresh()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'make fresh', {'out_io': 'buffer', 'out_name': 'forge_make'} )
+  let job_MAKE = job_start( 'make fresh', {'out_io': 'buffer', 'out_name': 'forge_make',
+                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
   setlocal buftype=nofile
@@ -63,9 +65,11 @@ endfunction
 
 ""
 " Calls the 'make fresh' command in the terminal
+"
 function! FORGE_MakeWebApiCgi()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'make web_api_cgi', {'out_io': 'buffer', 'out_name': 'forge_make'} )
+  let job_MAKE = job_start( 'make web_api_cgi', {'out_io': 'buffer', 'out_name': 'forge_make',
+                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
   setlocal buftype=nofile
@@ -78,9 +82,11 @@ endfunction
 
 ""
 " Calls the 'make fresh' command in the terminal
+"
 function! FORGE_MakeAtf()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'make atf', {'out_io': 'buffer', 'out_name': 'forge_make'} )
+  let job_MAKE = job_start( 'make atf', {'out_io': 'buffer', 'out_name': 'forge_make',
+                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
   setlocal buftype=nofile
@@ -93,9 +99,11 @@ endfunction
 
 ""
 " Calls the 'make fresh' command in the terminal
+"
 function! FORGE_UtSysBuild()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'ut_sys_build', {'out_io': 'buffer', 'out_name': 'forge_make'} )
+  let job_MAKE = job_start( 'ut_sys_build', {'out_io': 'buffer', 'out_name': 'forge_make',
+                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
   setlocal buftype=nofile
@@ -124,6 +132,7 @@ func! FORGE_HandleBuildMenu(id, result)
     "Do nothing
   endif
 endfunc
+
 
 ""
 " Build Menu Popup Function
