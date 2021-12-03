@@ -1,16 +1,13 @@
 " -----------------------------------------------------------------------------------
 " FORGE:        Forge Build Tools
 " Maintainer:   Charlie Burgess [http://cburg.co.uk]
-" Version:      1.2.0
-" Project Repo: http://github.com/cburj/forge/
+" Version:      1.2.1
+" Project Repo: http://github.com/cburj/vim-forge/
 " Description:  Makes common DAI build commands available within VIM. 
 " -----------------------------------------------------------------------------------
-" Features Requiring Implementation:
-" - Allow jobs to be stopped from within the buffer.
-" -----------------------------------------------------------------------------------
 
 
-" -----------------------------------------------------------------------------------
+
 " VERBOSE COMMANDS:
 " These can be called by typing the name of the command.
 " E.g. ':Fmake' will execute the function FORGE_Make()
@@ -26,8 +23,6 @@ command! Fmenu        :call FORGE_MainMenu()
 " These can by called without the need to go into command mode.
 " I plan on making these all 3-character or less keybinds to make
 " things easy to remember.
-
-" -----------------------------------------------------------------------------------
 
 
 ""
@@ -180,6 +175,6 @@ endfun
 
 
 function! s:forgeBanner()
-  execute "normal! i[FORGING PROJECT...]"
+  execute "normal! i[[FORGING PROJECT]]"
   execute "normal! ^"
 endfunction

@@ -7,12 +7,13 @@ FORGE makes common DAI build commands available within VIM without the need to c
 All available build commands can also be accessed from the build menu, by calling ```:Fmenu```.
 
 ## Supported Build Commands
+These commands can be called in command mode. Or bound to keymaps in your .vimrc file.
 * ```:Fmake``` ➡ ```make```
 * ```:Fmakefresh``` ➡ ```make fresh```
 * ```:Fmakeatf``` ➡ ```make atf```
 * ```:Fmakeapi``` ➡ ```make web_api_cgi```
 * ```:Futsysbuild``` ➡ ```ut_sys_build```  
-These commands can be called in command mode. Or bound to keymaps in your .vimrc file.
+To stop a build and/or close the build output window, just press ```q```
 
 ## Upcoming Features
 * Commands inside the build output window. E.g. cancel a build and restart.
