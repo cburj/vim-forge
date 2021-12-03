@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------------
 " FORGE:        Forge Build Tools
 " Maintainer:   Charlie Burgess [http://cburg.co.uk]
-" Version:      1.1.0
+" Version:      1.1.1
 " Project Repo: http://github.com/cburj/forge/
 " Description:  Makes common DAI build commands available within VIM. 
 " -----------------------------------------------------------------------------------
@@ -38,6 +38,9 @@ function! FORGE_Make()
                            \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
+
+  execute "normal! ggdG"
+
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
@@ -55,6 +58,9 @@ function! FORGE_MakeFresh()
                            \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
+
+  execute "normal! ggdG"
+  
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
@@ -72,6 +78,9 @@ function! FORGE_MakeWebApiCgi()
                            \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
+
+  execute "normal! ggdG"
+
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
@@ -89,6 +98,9 @@ function! FORGE_MakeAtf()
                            \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
+
+  execute "normal! ggdG"
+  
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
@@ -106,6 +118,9 @@ function! FORGE_UtSysBuild()
                            \'err_io': 'buffer', 'err_name': 'forge_make',} )
 
   vsplit | buffer forge_make
+
+  execute "normal! ggdG"
+
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
