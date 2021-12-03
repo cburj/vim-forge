@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------------
 " FORGE:        Forge Build Tools
 " Maintainer:   Charlie Burgess [http://cburg.co.uk]
-" Version:      1.1.2
+" Version:      1.2.0
 " Project Repo: http://github.com/cburj/forge/
 " Description:  Makes common DAI build commands available within VIM. 
 " -----------------------------------------------------------------------------------
@@ -29,13 +29,19 @@ command! Fmenu        :call FORGE_MainMenu()
 
 " -----------------------------------------------------------------------------------
 
+
 ""
 " Calls the generic 'make' command in the terminal
 "
 function! FORGE_Make()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'make', {'out_io': 'buffer', 'out_name': 'forge_make',
-                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
+  let job_MAKE = job_start( 'make', {
+                                      \'out_io': 'buffer',
+                                      \'out_name': 'forge_make',
+                                      \'err_io': 'buffer',
+                                      \'err_name': 'forge_make',
+                                      \'stoponexit': 'term',
+                                      \} )
 
   vsplit | buffer forge_make
 
@@ -44,8 +50,8 @@ function! FORGE_Make()
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
-  "TODO assign the job to a global variable. Then we can
-  "allow the user to stop a job from within the new buffer.
+  execute s:forgeBanner()
+
 endfunction
 
 
@@ -54,8 +60,13 @@ endfunction
 "
 function! FORGE_MakeFresh()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'make fresh', {'out_io': 'buffer', 'out_name': 'forge_make',
-                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
+  let job_MAKE = job_start( 'make fresh', {
+                                      \'out_io': 'buffer',
+                                      \'out_name': 'forge_make',
+                                      \'err_io': 'buffer',
+                                      \'err_name': 'forge_make',
+                                      \'stoponexit': 'term',
+                                      \} )
 
   vsplit | buffer forge_make
 
@@ -64,8 +75,7 @@ function! FORGE_MakeFresh()
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
-  "TODO assign the job to a global variable. Then we can
-  "allow the user to stop a job from within the new buffer.
+  execute s:forgeBanner()
 endfunction
 
 
@@ -74,8 +84,13 @@ endfunction
 "
 function! FORGE_MakeWebApiCgi()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'make web_api_cgi', {'out_io': 'buffer', 'out_name': 'forge_make',
-                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
+  let job_MAKE = job_start( 'make web_api_cgi', {
+                                      \'out_io': 'buffer',
+                                      \'out_name': 'forge_make',
+                                      \'err_io': 'buffer',
+                                      \'err_name': 'forge_make',
+                                      \'stoponexit': 'term',
+                                      \} )
 
   vsplit | buffer forge_make
 
@@ -84,8 +99,7 @@ function! FORGE_MakeWebApiCgi()
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
-  "TODO assign the job to a global variable. Then we can
-  "allow the user to stop a job from within the new buffer.
+  execute s:forgeBanner()
 endfunction
 
 
@@ -94,8 +108,13 @@ endfunction
 "
 function! FORGE_MakeAtf()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'make atf', {'out_io': 'buffer', 'out_name': 'forge_make',
-                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
+  let job_MAKE = job_start( 'make atf', {
+                                      \'out_io': 'buffer',
+                                      \'out_name': 'forge_make',
+                                      \'err_io': 'buffer',
+                                      \'err_name': 'forge_make',
+                                      \'stoponexit': 'term',
+                                      \} )
 
   vsplit | buffer forge_make
 
@@ -104,8 +123,7 @@ function! FORGE_MakeAtf()
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
-  "TODO assign the job to a global variable. Then we can
-  "allow the user to stop a job from within the new buffer.
+  execute s:forgeBanner()
 endfunction
 
 
@@ -114,8 +132,13 @@ endfunction
 "
 function! FORGE_UtSysBuild()
   "invoke the command in a new process instance.
-  let job_MAKE = job_start( 'ut_sys_build', {'out_io': 'buffer', 'out_name': 'forge_make',
-                           \'err_io': 'buffer', 'err_name': 'forge_make',} )
+  let job_MAKE = job_start( 'ut_sys_build', {
+                                      \'out_io': 'buffer',
+                                      \'out_name': 'forge_make',
+                                      \'err_io': 'buffer',
+                                      \'err_name': 'forge_make',
+                                      \'stoponexit': 'term',
+                                      \} )
 
   vsplit | buffer forge_make
 
@@ -124,8 +147,7 @@ function! FORGE_UtSysBuild()
   setlocal buftype=nofile
   setlocal filetype=forge_make
 
-  "TODO assign the job to a global variable. Then we can
-  "allow the user to stop a job from within the new buffer.
+  execute s:forgeBanner()
 endfunction
 
 
@@ -155,3 +177,9 @@ endfunc
 func! FORGE_MainMenu()
   call popup_menu([ 'make', 'make fresh', 'make web_api_cgi','make atf', 'ut_sys_build'], #{ title: "Build Options [FORGE]", callback: 'FORGE_HandleBuildMenu', highlight: 'wildmenu', border: [], close: 'click',  padding: [1,5,1,5]} )
 endfun
+
+
+function! s:forgeBanner()
+  execute "normal! i[FORGING PROJECT...]"
+  execute "normal! ^"
+endfunction

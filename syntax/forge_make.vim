@@ -7,11 +7,12 @@
 "*                                                        *
 "**********************************************************
 
-syn match forgeMakeComp   "Compiling.*$"
-syn match forgeMakeLink   "Linking.*$"
-syn match forgeMakeError  "ERROR.*$"
-syn match forgeMakeGen    "Generating.*$"
-syn match forgeMakeCopy   "Copying.*$"
+syn match forgeMakeComp     "Compiling.*$"
+syn match forgeMakeLink     "Linking.*$"
+syn match forgeMakeError    "ERROR.*$"
+syn match forgeMakeGen      "Generating.*$"
+syn match forgeMakeCopy     "Copying.*$"
+syn keyword forgeDebug       Debug
 
 let b:current_syntax = "forge_make"
 
@@ -20,3 +21,4 @@ hi def link forgeMakeLink      Constant
 hi def link forgeMakeError     Error
 hi def link forgeMakeGen       Operator
 hi def link forgeMakeCopy      Define
+hi def link forgeDebug         Macro
