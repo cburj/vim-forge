@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------------
 " FORGE:        Forge Build Tools
 " Maintainer:   Charlie Burgess [http://cburg.co.uk]
-" Version:      1.1.1
+" Version:      1.1.2
 " Project Repo: http://github.com/cburj/forge/
 " Description:  Makes common DAI build commands available within VIM. 
 " -----------------------------------------------------------------------------------
@@ -153,5 +153,5 @@ endfunc
 " Build Menu Popup Function
 "
 func! FORGE_MainMenu()
-  call popup_menu([ 'make', 'make fresh', 'make web_apic_cgi','make atf', 'ut_sys_build'], #{ title: "Build Options [FORGE]", callback: 'FORGE_HandleBuildMenu', highlight: 'wildmenu', border: [], close: 'click',  padding: [1,5,1,5]} )
+  call popup_menu([ 'make', 'make fresh', 'make web_api_cgi','make atf', 'ut_sys_build'], #{ title: "Build Options [FORGE]", callback: 'FORGE_HandleBuildMenu', highlight: 'wildmenu', border: [], close: 'click',  padding: [1,5,1,5]} )
 endfun
