@@ -17,8 +17,8 @@ syn keyword forgeDebug       Debug
 let b:current_syntax = "forge_make"
 
 hi def link forgeMakeComp      Statement
-hi def link forgeMakeLink      Constant
+hi def link forgeMakeLink      String
 hi def link forgeMakeError     Error
 hi def link forgeMakeGen       Operator
 hi def link forgeMakeCopy      Define
-hi def link forgeDebug         Macro
+hi def link forgeDebug         StorageClass
