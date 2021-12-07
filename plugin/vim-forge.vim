@@ -12,6 +12,7 @@
 " These can be called by typing the name of the command.
 " E.g. ':Fmake' will execute the function FORGE_Make()
 command! Fmake        :call FORGE_Make()
+command! Fmakefile    :call FORGE_MakeFile()
 command! Fmakefresh   :call FORGE_MakeFresh()
 command! Fmakeapi     :call FORGE_MakeWebApiCgi()
 command! Fmakeatf     :call FORGE_MakeAtf()
@@ -31,6 +32,34 @@ command! Fmenu        :call FORGE_MainMenu()
 function! FORGE_Make()
   "invoke the command in a new process instance.
   let job_MAKE = job_start( 'make', {
+                                      \'out_io': 'buffer',
+                                      \'out_name': 'forge_make',
+                                      \'err_io': 'buffer',
+                                      \'err_name': 'forge_make',
+                                      \'stoponexit': 'term',
+                                      \} )
+
+  vsplit | buffer forge_make
+
+  execute "normal! ggdG"
+
+  setlocal buftype=nofile
+  setlocal filetype=forge_make
+
+  execute s:forgeBanner()
+
+endfunction
+
+
+""
+" Calls the generic 'make' command on the current file.
+"
+function! FORGE_MakeFile()
+  let executable = expand('%:r')
+  let buildcommand = 'make ' . executable
+
+  "invoke the command in a new process instance.
+  let job_MAKE = job_start( buildcommand, {
                                       \'out_io': 'buffer',
                                       \'out_name': 'forge_make',
                                       \'err_io': 'buffer',
@@ -153,12 +182,14 @@ func! FORGE_HandleBuildMenu(id, result)
   if a:result == 1
     call FORGE_Make()
   elseif a:result ==2
+    call FORGE_MakeFile()
+  elseif a:result ==3
     call FORGE_MakeFresh()
-  elseif a:result == 3
-    call FORGE_MakeWebApiCgi()
   elseif a:result == 4
-    call FORGE_MakeAtf()
+    call FORGE_MakeWebApiCgi()
   elseif a:result == 5
+    call FORGE_MakeAtf()
+  elseif a:result == 6
     call FORGE_UtSysBuild()
   else
     "Do nothing
@@ -170,11 +201,14 @@ endfunc
 " Build Menu Popup Function
 "
 func! FORGE_MainMenu()
-  call popup_menu([ 'make', 'make fresh', 'make web_api_cgi','make atf', 'ut_sys_build'], #{ title: "Build Options [FORGE]", callback: 'FORGE_HandleBuildMenu', highlight: 'wildmenu', border: [], close: 'click',  padding: [1,5,1,5]} )
+  call popup_menu([ 'make', 'make (this file)','make fresh', 'make web_api_cgi','make atf', 'ut_sys_build'], #{ title: "Build Options [FORGE]", callback: 'FORGE_HandleBuildMenu', highlight: 'wildmenu', border: [], close: 'click',  padding: [1,5,1,5]} )
 endfun
 
 
 function! s:forgeBanner()
-  execute "normal! i[[FORGING PROJECT]]"
+  " execute "normal! i█▀▀▀ █▀▀█ █▀▀█ █▀▀█ █▀▀▀\n"
+  " execute "normal! i█▀▀▀ █  █ █▄▄▀ █ ▄▄ █▀▀▀\n"
+  " execute "normal! i█    █▄▄█ █  █ █▄▄█ █▄▄▄\n"
+  execute "normal! i█FORGE"
   execute "normal! ^"
 endfunction
