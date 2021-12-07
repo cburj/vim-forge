@@ -47,7 +47,7 @@ function! FORGE_Make()
   setlocal filetype=forge_make
 
   execute s:forgeBanner()
-
+  execute "normal! G"
 endfunction
 
 
@@ -75,7 +75,7 @@ function! FORGE_MakeFile()
   setlocal filetype=forge_make
 
   execute s:forgeBanner()
-
+  execute "normal! G"
 endfunction
 
 
@@ -100,6 +100,7 @@ function! FORGE_MakeFresh()
   setlocal filetype=forge_make
 
   execute s:forgeBanner()
+  execute "normal! G"
 endfunction
 
 
@@ -124,6 +125,7 @@ function! FORGE_MakeWebApiCgi()
   setlocal filetype=forge_make
 
   execute s:forgeBanner()
+  execute "normal! G"
 endfunction
 
 
@@ -148,6 +150,7 @@ function! FORGE_MakeAtf()
   setlocal filetype=forge_make
 
   execute s:forgeBanner()
+  execute "normal! G"
 endfunction
 
 
@@ -172,6 +175,7 @@ function! FORGE_UtSysBuild()
   setlocal filetype=forge_make
 
   execute s:forgeBanner()
+  execute "normal! G"
 endfunction
 
 
@@ -206,9 +210,7 @@ endfun
 
 
 function! s:forgeBanner()
-  " execute "normal! i█▀▀▀ █▀▀█ █▀▀█ █▀▀█ █▀▀▀\n"
-  " execute "normal! i█▀▀▀ █  █ █▄▄▀ █ ▄▄ █▀▀▀\n"
-  " execute "normal! i█    █▄▄█ █  █ █▄▄█ █▄▄▄\n"
-  execute "normal! i█FORGE"
+  execute "normal! i█▀▀▀ █▀▀█ █▀▀█ █▀▀█ █▀▀▀\<cr>█▀▀▀ █  █ █▄▄▀ █ ▄▄ █▀▀▀\<cr>█    █▄▄█ █  █ █▄▄█ █▄▄▄"
+  " execute "normal! i█FORGE"
   execute "normal! ^"
 endfunction
