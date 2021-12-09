@@ -210,7 +210,7 @@ endfun
 
 
 function! s:forgeBanner()
-  execute "normal! i█▀▀▀ █▀▀█ █▀▀█ █▀▀█ █▀▀▀\<cr>█▀▀▀ █  █ █▄▄▀ █ ▄▄ █▀▀▀\<cr>█    █▄▄█ █  █ █▄▄█ █▄▄▄"
+  execute "normal! i\<cr>█▀▀▀ █▀▀█ █▀▀█ █▀▀█ █▀▀▀\<cr>█▀▀▀ █  █ █▄▄▀ █ ▄▄ █▀▀▀\<cr>█    █▄▄█ █  █ █▄▄█ █▄▄▄\<cr>"
   " execute "normal! i█FORGE"
   execute "normal! ^"
 endfunction
