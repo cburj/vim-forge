@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------------
 " FORGE:        Forge Build Tools
 " Maintainer:   Charlie Burgess [http://cburg.co.uk]
-" Version:      1.2.5
+" Version:      1.3.0
 " Project Repo: http://github.com/cburj/vim-forge/
 " Description:  Makes common DAI build commands available within VIM. 
 " -----------------------------------------------------------------------------------
@@ -10,14 +10,15 @@
 
 " VERBOSE COMMANDS:
 " These can be called by typing the name of the command.
-" E.g. ':Fmake' will execute the function FORGE_Make()
-command! Fmake        :call FORGE_Make()
-command! Fmakefile    :call FORGE_MakeFile()
-command! Fmakefresh   :call FORGE_MakeFresh()
-command! Fmakeapi     :call FORGE_MakeWebApiCgi()
-command! Fmakeatf     :call FORGE_MakeAtf()
-command! Futsysbuild  :call FORGE_UtSysBuild()
-command! Fmenu        :call FORGE_MainMenu()
+" Replace Make with Forge to get the correct build command
+" E.g. make fresh is Forgefresh, which calls FORGE_Make()
+command! Forge        :call FORGE_Make()
+command! ForgeFile    :call FORGE_MakeFile()
+command! ForgeFresh   :call FORGE_MakeFresh()
+command! ForgeApi     :call FORGE_MakeWebApiCgi()
+command! ForgeAtf     :call FORGE_MakeAtf()
+command! ForgeUtSysBuild  :call FORGE_UtSysBuild()
+command! ForgeMenu        :call FORGE_MainMenu()
 
 
 " TODO KEYBINDS:

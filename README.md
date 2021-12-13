@@ -8,11 +8,12 @@ All available build commands can also be accessed from the build menu, by callin
 
 ## Supported Build Commands
 These commands can be called in command mode. Or bound to keymaps in your .vimrc file.
-* ```:Fmake``` ➡ ```make```
-* ```:Fmakefresh``` ➡ ```make fresh```
-* ```:Fmakeatf``` ➡ ```make atf```
-* ```:Fmakeapi``` ➡ ```make web_api_cgi```
-* ```:Futsysbuild``` ➡ ```ut_sys_build```  
+* ```:Forge``` ➡ ```make```
+* ```:ForgeFile``` ➡ ```make <<current file>>```
+* ```:ForgeFresh``` ➡ ```make fresh```
+* ```:ForgeAtf``` ➡ ```make atf```
+* ```:ForgeApi``` ➡ ```make web_api_cgi```
+* ```:ForgeUtSysBuild``` ➡ ```ut_sys_build```  
 To stop a build and/or close the build output window, just press ```q```
 
 ## Upcoming Features
